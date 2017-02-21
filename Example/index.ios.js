@@ -4,50 +4,70 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View
+    AppRegistry,
+    StyleSheet,
+    Text,
+    View,
+    DeviceEventEmitter
 } from 'react-native';
+import {MotionDetector} from 'react-native-motion-detector';
 
 export default class Example extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
-    );
-  }
+    /**
+     * Class constructor
+     *
+     * @param props
+     */
+    constructor(props) {
+        super(props);
+
+        this.motionListener = null;
+        this.state = {
+            roll: null,
+            pitch: null,
+            yaw: null
+        }
+    }
+
+    componentWillMount() {
+        this.motionListener = DeviceEventEmitter.addListener('attitude', this.onAttitudeChange.bind(this));
+        MotionDetector.start();
+    }
+
+    componentWillUnmount() {
+        this.motionListener.remove();
+        MotionDetector.stop();
+    }
+
+    onAttitudeChange(attitudeData) {
+        this.setState({...attitudeData});
+    }
+
+    render() {
+        return (
+            <View style={styles.container}>
+                <Text style={styles.data}>Roll: {this.state.roll}</Text>
+                <Text style={styles.data}>Pitch: {this.state.pitch}</Text>
+                <Text style={styles.data}>Yaw: {this.state.yaw}</Text>
+            </View>
+        );
+    }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#F5FCFF',
+    },
+    data: {
+        fontSize: 20,
+        textAlign: 'center',
+        margin: 10,
+    }
 });
 
 AppRegistry.registerComponent('Example', () => Example);
