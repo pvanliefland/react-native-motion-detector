@@ -1,0 +1,20 @@
+{
+  "name": "react-native-motion-detector",
+  "description": "A React Native module for iOS and Android that gives access to sensor data.",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pvanliefland/react-native-motion-detector.git"
+  },
+  "nativePackage": true,
+  "author": "Pierre Vanliefland (pvanliefland)",
+  "keywords": [
+    "react-native",
+    "react-native-motion-detector",
+    "react",
+    "native",
+    "motion",
+    "detector"
+  ]
+}
