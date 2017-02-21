@@ -1,3 +1,5 @@
 rootProject.name = 'Example'
+include ':react-native-motion-detector'
+project(':react-native-motion-detector').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-motion-detector/android')
 
 include ':app'
