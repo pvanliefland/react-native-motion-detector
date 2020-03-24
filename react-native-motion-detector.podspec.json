@@ -1,0 +1,27 @@
+{
+  "name": "react-native-motion-detector",
+  "version": "1.0.1",
+  "homepage": "https://github.com/pvanliefland/react-native-motion-detector",
+  "summary": "React Native Motion Detector",
+  "license": "MIT",
+  "authors": {
+    "Brent Vatne": "brentvatne@gmail.com",
+    "Arsal Imam": "arsal.r.imam@gmail.com"
+  },
+  "platforms": {
+    "ios": "7.0",
+    "tvos": "9.0"
+  },
+  "source": {
+    "git": "https://github.com/pvanliefland/react-native-motion-detector",
+    "tag": "v1.0.1"
+  },
+  "preserve_paths": "**/*.js",
+  "frameworks": [
+  ],
+  "dependencies": {
+    "React": [
+
+    ]
+  }
+}
